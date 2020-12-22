@@ -11,6 +11,9 @@ let actualDivsClicked = [];
 let score = 0;
 
 const reflipCard = (d1, d2) => {
+	d1.style.backgroundColor = "rgb(2, 0, 36)";
+	d2.style.backgroundColor = "rgb(2, 0, 36)";
+
 	const front1 = d1.querySelector(".front");
 	const back1 = d1.querySelector(".back");
 	const front2 = d2.querySelector(".front");
@@ -89,7 +92,7 @@ const flipCard = e => {
 		}, 1500);
 	}
 
-	scoreP.innerText = String(score);
+	scoreP.innerText = `Score: ${score}`;
 	div.numClicks++;
 };
 
