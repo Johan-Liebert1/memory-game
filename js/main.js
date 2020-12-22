@@ -1,10 +1,12 @@
 const containerDiv = document.querySelector(".container");
 const cardRows = document.getElementsByClassName("card-row");
+const totalClicksH = document.getElementById("total-clicks");
 const scoreP = document.getElementById("score");
+let animalsList = [];
 
 let cardsAndValues = [];
 let numClicks = 0;
-
+let totalCicks = 0;
 let animalsClicked = [];
 let divsClicked = [];
 let actualDivsClicked = [];
@@ -26,8 +28,8 @@ const reflipCard = (d1, d2) => {
 };
 
 const flipCard = e => {
+	totalCicks++;
 	const div = e.target;
-	console.log("div = ", div);
 
 	let front = div.querySelector(".front");
 	let back = div.querySelector(".back");
@@ -93,10 +95,27 @@ const flipCard = e => {
 	}
 
 	scoreP.innerText = `Score: ${score}`;
+	totalClicksH.innerText = `Times Clicked: ${totalCicks}`;
 	div.numClicks++;
 };
 
+const setAnimalsList = () => {
+	animalsList = animalsListSeed.map(c => c);
+	let i = animalsList.length,
+		j,
+		temp;
+	if (i === 0) return animalsList;
+
+	while (--i) {
+		j = Math.floor(Math.random() * (i + 1));
+		temp = animalsList[i];
+		animalsList[i] = animalsList[j];
+		animalsList[j] = temp;
+	}
+};
+
 const insertDivs = () => {
+	setAnimalsList();
 	let count = 1;
 	for (let i = 0; i < 4; i++) {
 		for (let j = 0; j < 4; j++) {
@@ -118,7 +137,6 @@ const insertDivs = () => {
 				card: card,
 				animal: animalsList[count - 1]
 			});
-
 			count++;
 		}
 	}

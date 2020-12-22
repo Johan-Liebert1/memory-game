@@ -1,18 +1,18 @@
-const animalsList = [
-	"cow",
-	"deer",
+const animalsListSeed = [
+	"cat",
+	"bear",
 	"lion",
-	"horse",
-	"koala",
+	"dog",
+	"monkey",
 	"panda",
-	"hippo",
-	"kangaroo",
-	"cow",
-	"deer",
+	"penguin",
+	"pig",
+	"cat",
+	"bear",
 	"lion",
-	"horse",
-	"koala",
+	"dog",
+	"monkey",
 	"panda",
-	"hippo",
-	"kangaroo"
+	"penguin",
+	"pig"
 ];
