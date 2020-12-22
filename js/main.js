@@ -33,7 +33,7 @@ const flipCard = e => {
 
 	let front = div.querySelector(".front");
 	let back = div.querySelector(".back");
-	let animalNameSpan = back.querySelector("span");
+	let animalNameSpan = back.querySelector("div");
 
 	if (div.numClicks % 2 === 0) {
 		// shows the animal name
@@ -56,10 +56,10 @@ const flipCard = e => {
 	} else {
 		// shows the div number
 		div.style.backgroundColor = "rgb(2, 0, 36)";
-
 		front.classList.remove("hidden");
 		back.classList.add("hidden");
 	}
+
 	console.log(divsClicked);
 
 	if (animalsClicked.length === 2) {
@@ -70,9 +70,11 @@ const flipCard = e => {
 
 			for (let i = 0; i < allCards.length; i++) {
 				const back = allCards[i].querySelector(".back");
-				const span = back.querySelector("span");
+				const span = back.querySelector("div");
 				if (span.innerText === animalsClicked[0]) {
 					allCards[i].removeEventListener("click", flipCard);
+					span.className = "span-animal-name";
+					span.innerText = span.innerText.toUpperCase();
 				}
 			}
 
@@ -122,7 +124,7 @@ const insertDivs = () => {
 			const card = document.createElement("div");
 			card.className = "card";
 			card.numClicks = 0;
-			const span = `<span class = 'hidden'>${animalsList[count - 1]}</span>`;
+			const span = `<div class = 'hidden'>${animalsList[count - 1]}</div>`;
 			const img = `<img src = "images/${animalsList[count - 1]}.png" />`;
 			card.innerHTML = `
                 <div class = 'front'>${count}</div>
