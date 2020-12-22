@@ -80,3 +80,23 @@ img {
 	width: 50%;
 	justify-content: space-between;
 }
+
+button {
+	height: 50%;
+	align-self: center;
+	outline: none;
+	border: none;
+	background-color: #2ecc71;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+	padding: 20px 10px;
+	display: flex;
+	align-items: center;
+	width: 150px;
+	justify-content: center;
+}
+
+button:hover {
+	background-color: #27ae60;
+}

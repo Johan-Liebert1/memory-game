@@ -2,15 +2,26 @@ const containerDiv = document.querySelector(".container");
 const cardRows = document.getElementsByClassName("card-row");
 const totalClicksH = document.getElementById("total-clicks");
 const scoreP = document.getElementById("score");
+const button = document.getElementById("animal-names");
 let animalsList = [];
 
-let cardsAndValues = [];
 let numClicks = 0;
 let totalCicks = 0;
 let animalsClicked = [];
 let divsClicked = [];
 let actualDivsClicked = [];
 let score = 0;
+let showAnimalNames = false;
+
+button.addEventListener("click", () => {
+	showAnimalNames = !showAnimalNames;
+
+	if (showAnimalNames) {
+		button.innerText = "Hide Animal Names";
+	} else {
+		button.innerText = "Show Animal Names";
+	}
+});
 
 const reflipCard = (d1, d2) => {
 	d1.style.backgroundColor = "rgb(2, 0, 36)";
@@ -60,8 +71,6 @@ const flipCard = e => {
 		back.classList.add("hidden");
 	}
 
-	console.log(divsClicked);
-
 	if (animalsClicked.length === 2) {
 		if (animalsClicked[0] === animalsClicked[1]) {
 			// then cannot click on these cards again
@@ -73,8 +82,11 @@ const flipCard = e => {
 				const span = back.querySelector("div");
 				if (span.innerText === animalsClicked[0]) {
 					allCards[i].removeEventListener("click", flipCard);
-					span.className = "span-animal-name";
-					span.innerText = span.innerText.toUpperCase();
+
+					if (showAnimalNames) {
+						span.className = "span-animal-name";
+						span.innerText = span.innerText.toUpperCase();
+					}
 				}
 			}
 
@@ -133,12 +145,6 @@ const insertDivs = () => {
 
 			card.addEventListener("click", flipCard);
 			cardRows[i].appendChild(card);
-
-			cardsAndValues.push({
-				number: count,
-				card: card,
-				animal: animalsList[count - 1]
-			});
 			count++;
 		}
 	}
